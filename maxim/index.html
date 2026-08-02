@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>портфолио nvoro</title>
+    <style>
+        :root {
+            --bg-color: #f5f0eb;
+            --card-bg: #ffffff;
+            --text-main: #4d4443;
+            --text-muted: #8c8180;
+            --accent: #c4a491;
+            --accent-light: #f5ece6;
+            --green: #a2d2a8;
+            --shadow: 0 10px 30px rgba(196, 164, 145, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .portfolio-card {
+            background: var(--card-bg);
+            max-width: 550px;
+            width: 100%;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Хедер профиля */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar-box {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            background: var(--accent-light);
+            border-radius: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            border: 3px solid var(--accent);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+        }
+
+        .avatar-box:hover .avatar {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .status-badge {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: #a2d2a8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+            border: 3px solid var(--card-bg);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .sub {
+            font-size: 14px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Секции общего стиля */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Текст обо мне */
+        .bio-box {
+            font-size: 15px;
+            line-height: 1.6;
+            background: var(--accent-light);
+            padding: 16px;
+            border-radius: 18px;
+            border-left: 5px solid var(--accent);
+        }
+
+        /* Навыки / Скиллы */
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skill-item {
+            font-size: 14px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            background: var(--accent-light);
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--accent);
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        /* Проекты */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .project-card {
+            border: 1px solid var(--accent-light);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            background: #faf7f5;
+            transform: translateX(4px);
+        }
+
+        .proj-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .proj-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .proj-link {
+            background: var(--accent-light);
+            color: var(--accent);
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+
+        .proj-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Компьютерный Сетап */
+        .setup-box {
+            background: #faf7f5;
+            padding: 16px;
+            border-radius: 18px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .setup-item strong {
+            color: var(--accent);
+        }
+
+        /* Соцсети / Кнопки */
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--accent-light);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-card">
+        <!-- Верхняя карточка -->
+        <div class="header">
+            <div class="avatar-box">
+                <div class="avatar">💻</div>
+                <div class="status-badge">ONLINE</div>
+            </div>
+            <h1>maxim</h1>
+            <div class="sub">
+                <span>📍 Казань</span>
+                <span>🎒 7 класс</span>
+            </div>
+        </div>
+
+        <!-- Обо мне -->
+        <div class="section">
+            <div class="section-title">✨ Обо мне</div>
+            <p class="bio-box">Привет! Меня зовут Максим. Я учусь в школе и играю и программирую после школы. Мне нравится писать код, создавать интерфейсы и разбираться в том, как работают сайты. Постоянно изучаю что-то новое на ПК!</p>
+        </div>
+
+        <!-- Скиллы -->
+        <div class="section">
+            <div class="section-title">📊 Мои знания</div>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-info"><span>HTML & CSS</span><span>0%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>JavaScript</span><span>0%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Английский языкt</span><span>0%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Проекты -->
+        <div class="section">
+            <div class="section-title">📂 Проекты / Репозитории</div>
+            <div class="projects-list">
+                <div class="project-card">
+                    <div>
+                        <div class="proj-name">?</div>
+                        <div class="proj-desc">?</div>
+                    </div>
+                    <a href="#" target="_blank" class="proj-link">→</a>
+                </div>
+                <div class="project-card">
+                    <div>
+                        <div class="proj-name">?</div>
+                        <div class="proj-desc">?</div>
+                    </div>
+                    <a href="#" class="proj-link">→</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сетап -->
+        <div class="section">
+            <div class="section-title">🖥️ Мой ПК сетап</div>
+            <div class="setup-box">
+                <div class="setup-item"><strong>Процессор:</strong> I5-12400F</div>
+                <div class="setup-item"><strong>Видеокарта:</strong> RTX 3070</div>
+                <div class="setup-item"><strong>ОЗУ:</strong> 16 GB</div>
+                <div class="setup-item"><strong>Система:</strong> Windows 11</div>
+            </div>
+        </div>
+
+        <!-- Ссылки -->
+        <div class="section" style="margin-bottom: 0;">
