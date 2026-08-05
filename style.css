@@ -1658,3 +1658,29 @@ font-size:34px;
 
 
 }
+
+.card-link {
+
+text-decoration:none;
+
+color:inherit;
+
+display:block;
+
+}
+
+
+.card-link .card {
+
+transition:.3s;
+
+}
+
+
+.card-link:hover .card {
+
+transform:translateY(-8px);
+
+border-color:white;
+
+}
