@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAIVOR — Make your life easier</title>
+  <link rel="icon" type="image/png" href="/resources/favicon.png">
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f8ff17;
+      color: #ff252b;
+    }
+
+    .section {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      min-height: 100vh;
+      height: 100vh;
+    }
+
+    .section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      mix-blend-mode: overlay;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 70% 40%, rgba(0,0,0,.45) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 45% 80%, rgba(255,255,255,.55) 0 1px, transparent 1.5px);
+      background-size: 5px 5px, 7px 7px, 6px 6px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff52a;
+      background:
+        radial-gradient(ellipse at 50% 10%, rgba(255,215,125,.82) 0%, rgba(255,125,70,.25) 27%, transparent 48%),
+        radial-gradient(ellipse at 76% 22%, rgba(255,220,105,.72) 0%, transparent 29%),
+        radial-gradient(ellipse at 31% 68%, rgba(255,112,42,.75) 0%, transparent 32%),
+        linear-gradient(135deg, #ff2429 0%, #ff3130 42%, #ff272b 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      transform: translateY(-4px);
+    }
+
+    .brand {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: .95;
+      font-weight: 700;
+      letter-spacing: -2.5px;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 27px;
+      font-size: clamp(14px, 1.6vw, 21px);
+      font-weight: 400;
+    }
+
+    .meta-line {
+      width: 138px;
+      height: 2px;
+      background: #fff52a;
+    }
+
+    .intro {
+      min-height: 100vh;
+      background: #f7ff16;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .intro-inner {
+      width: min(630px, 66%);
+      position: relative;
+      z-index: 1;
+      margin-top: -10px;
+    }
+
+    .intro h2 {
+      margin: 0 0 31px;
+      font-size: clamp(34px, 4.8vw, 57px);
+      line-height: 1.06;
+      letter-spacing: -2px;
+      font-weight: 700;
+    }
+
+    .intro p {
+      margin: 0;
+      max-width: 520px;
+      font-size: clamp(16px, 2vw, 21px);
+      line-height: 1.25;
+      letter-spacing: .15px;
+    }
+
+    .contact {
+      min-height: 100vh;
+      color: #f7ff16;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at 50% 25%, rgba(255,192,255,.7) 0%, rgba(255,135,225,.34) 28%, transparent 52%),
+        radial-gradient(ellipse at 50% 75%, rgba(245,157,235,.55) 0%, transparent 46%),
+        linear-gradient(135deg, #d04dc1 0%, #d24dc1 45%, #d24fc2 100%);
+    }
+
+    .contact-title {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin: 0 20px auto;
+      padding-top: 245px;
+      font-size: clamp(43px, 6vw, 70px);
+      line-height: 1;
+      letter-spacing: -3px;
+      font-weight: 700;
+    }
+
+    .contact-bar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: auto 7.8% 27px;
+      font-size: clamp(14px, 1.5vw, 20px);
+      letter-spacing: .2px;
+    }
+
+    @media (max-width: 700px) {
+      .hero { min-height: 430px; }
+      .intro { min-height: 520px; }
+      .intro-inner { width: 72%; }
+      .meta { gap: 11px; }
+      .meta-line { width: 70px; }
+      .contact { min-height: 600px; }
+      .contact-title { padding-top: 170px; }
+      .contact-bar { margin-left: 7%; margin-right: 7%; }
+    }
+
+    @media (max-width: 480px) {
+      .brand { letter-spacing: -1.5px; }
+      .intro-inner { width: 78%; }
+      .intro h2 { letter-spacing: -1px; }
+      .contact-title { letter-spacing: -1.5px; }
+      .contact-bar { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="section hero">
+    <div class="hero-inner">
+      <h1 class="brand">TAIVOR</h1>
+      <div class="meta">
+        <span>IT COMPANY</span>
+        <span class="meta-line"></span>
+        <span>Founded in 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section intro">
+    <div class="intro-inner">
+      <h2>Welcome to the<br>first version of the<br>taivor company<br>website!</h2>
+      <p>
+        Hi, I'm Maksim, and I'm a young programmer<br>
+        Recently, I became interested in starting my<br>
+        own company.<br>
+        And I called it TAIVOR.
+      </p>
+    </div>
+  </section>
+
+  <section class="section contact">
+    <h2 class="contact-title">Make your life easier.</h2>
+
+    <div class="contact-bar">
+      <span>ILIN MAKSIM</span>
+      <span>nvoroo@yandex.ru</span>
+    </div>
+  </section>
+
+</body>
+</html>
